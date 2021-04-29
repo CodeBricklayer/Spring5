@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--配置User对象创建-->
+    <bean id="user" class="com.tanp.spring.demo1.model.User"/>
+
+    <!--set方法注入属性-->
+    <bean id="book" class="com.tanp.spring.demo1.model.Book">
+        <!--使用property完成属性注入-->
+        <property name="name" value="易筋经"/>
+    </bean>
+
+    <!--使用有参数构造方法注入属性-->
+    <bean id="orders" class="com.tanp.spring.demo1.model.Orders">
+        <!--使用constructor-arg完成属性注入-->
+        <constructor-arg index="0" name="name" value="电脑"/>
+        <constructor-arg index="1" name="address" value="china"/>
+    </bean>
+
+    <!--p名称空间注入属性-->
+    <bean id="book2" class="com.tanp.spring.demo1.model.Book" p:name="九阳神功"/>
+
+    <!--注入其他类型属性-->
+    <bean id="school" class="com.tanp.spring.demo1.model.School">
+        <property name="name" value="四川农业大学"/>
+        <!--null值-->
+        <property name="teacher">
+            <null/>
+        </property>
+        <!--特殊符号值-->
+        <property name="address">
+            <value><![CDATA[<<雅安>>]]></value>
+        </property>
+    </bean>
+</beans>
